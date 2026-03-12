@@ -1,0 +1,82 @@
+AI 기반 DDoS 공격 탐지 시스템 개발 (추후 주제 추가 가능 -> 웹분야 )
+
+1. Step 1 : 정상 네트워크 트래픽 데이터 수집
+
+정상적인 네트워크 통신 패턴을 학습하기 위해 Wireshark를 이용하여 다양한 정상 트래픽을 수집한다.
+각 활동을 수행하면서 약 5분 동안 패킷을 캡처하고, 이를 pcap 파일 형식으로 저장하여 프로젝트 폴더에 정리한다.
+
+수집할 정상 트래픽 유형은 다음과 같다.
+
+(1). 웹 브라우징
+
+(2). 영상 스트리밍
+
+(3). 파일 다운로드
+
+(4). 클라우드 서비스 접속
+
+(5). 메신저 사용
+
+(6). 온라인 게임 실행
+
+프로그램 및 시스템 업데이트 트래픽
+
+이와 같은 다양한 정상 활동을 통해 일반적인 사용자 네트워크 패턴을 충분히 포함한 데이터셋을 구축한다.
+
+
+2. Step 2 : pcap 데이터를 Flow 기반 CSV 데이터로 변환
+
+수집한 pcap 파일을 AI 학습에 활용하기 위해 Flow 기반 특징 데이터로 변환한다.
+
+이를 위해 CICFlowMeter 프로그램을 사용하여 pcap 파일을 CSV 형식으로 변환한다.
+
+변환 과정은 다음과 같다.
+
+CICFlowMeter 프로그램 실행
+
+수집한 pcap 파일 입력
+
+각 네트워크 Flow에 대한 특징(feature)을 추출
+
+결과를 CSV 파일 형태로 저장
+
+생성된 CSV 파일에는 다음과 같은 네트워크 Flow 특징 정보가 포함된다.
+
+Flow Duration
+
+Total Forward Packets
+
+Total Backward Packets
+
+Flow Bytes/s
+
+Flow Packets/s
+
+Packet Length Statistics 등
+
+이 데이터는 이후 AI 모델 학습을 위한 입력 데이터로 사용된다.
+
+
+<<<<<<<<<<<<< 탐지 가능 공격 >>>>>>>>>>>>>>
+
+| 공격 종류         | 탐지 가능 여부 |
+| ------------- | -------- |
+| TCP SYN Flood | 가능       |
+| UDP Flood     | 가능       |
+| ICMP Flood    | 가능       |
+| HTTP Flood    | 가능       |
+| Slowloris     | 가능       |
+6. DNS Amplification Attack
+7. NTP Amplification Attack
+8. Smurf Attack
+9. TCP ACK Flood
+
+10. Reflection Attack
+
+
+
+
+
+
+
+
